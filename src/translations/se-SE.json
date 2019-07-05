@@ -1,0 +1,17 @@
+{
+  "APP_NAME": "Boosterway",
+  "About": "A propos",
+  "Hello world !": "Hej världen !",
+  "Home": "Hem",
+  "Logged in as": "Logga in som",
+  "Login": "Logga in",
+  "Register": "Registrera",
+  "Logout": "Logga ut",
+  "Password": "Lösenord",
+  "Password is required": "Upprepa lösenord",
+  "Username": "Användarnamn eller e-post",
+  "Username is required": "Användarnamn krävs",
+  "Username or password incorrect.": "Användarnamn eller lösenord är fel",
+  "Remember me": "Kom ihåg mig",
+  "Version": "Version"
+}

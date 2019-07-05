@@ -1,0 +1,51 @@
+/*
+ * Global application theme.
+ * Framework overrides and customization goes here.
+ */
+
+@import "src/theme/theme-variables";
+@import "~bootstrap/scss/mixins/_breakpoints";
+
+// FONTS
+@import url("https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900,1000");
+body {
+  font-family: Poppins;
+}
+
+// BUTTONS AND INPUTS
+.btn {
+  background: #6dd8a6 !important;
+  border: 1px solid #6dd8a6 !important;
+}
+
+input,
+.btn,
+.card {
+  border-radius: 30px !important;
+}
+input,
+.btn-primary {
+  height: 50px !important;
+}
+
+// TESXT MODIFIERS
+.info-text {
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: 12px;
+  text-align: center;
+  margin-top: 20px;
+  color: rgba(0, 0, 0, 0.4);
+}
+
+// ABSOLUTE POSSITIONS
+.upper-right-possition {
+  position: absolute;
+  right: 100px;
+  top: 20px;
+}
+.upper-right-possition-2 {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+}
