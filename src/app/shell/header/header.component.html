@@ -1,6 +1,6 @@
 <header>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="https://github.com/ngx-rocket" translate
+    <a class="navbar-brand" href="" translate
       >APP_NAME</a
     >
     <button
@@ -18,6 +18,9 @@
       class="collapse navbar-collapse float-xs-none"
       [ngbCollapse]="menuHidden"
     >
+
+
+    
       <div class="navbar-nav">
         <a
           class="nav-item nav-link text-uppercase"
@@ -36,6 +39,9 @@
           <span translate>About</span>
         </a>
       </div>
+
+
+
       <div class="navbar-nav ml-auto">
         <div class="nav-item" ngbDropdown placement="bottom-right">
           <a id="language-dropdown" class="nav-link" ngbDropdownToggle>{{
@@ -57,7 +63,7 @@
           </a>
           <div ngbDropdownMenu aria-labelledby="user-dropdown">
             <h6 class="dropdown-header">
-              <span translate>Logged in as</span> <b>{{ username }}</b>
+              <span translate>Logged in as</span> <b></b>
             </h6>
             <div class="dropdown-divider"></div>
             <button class="dropdown-item" (click)="logout()" translate>

@@ -11,6 +11,7 @@ import { RouteReusableStrategy } from './route-reusable-strategy';
 import { I18nService } from './i18n.service';
 import { AuthguardService } from './authentication/authguard.service';
 import { AuthenticationService } from './http/authentication.service';
+import { HttpService } from './http/http.service';
 
 @NgModule({
   imports: [CommonModule, HttpClientModule, TranslateModule, RouterModule],
@@ -18,6 +19,7 @@ import { AuthenticationService } from './http/authentication.service';
     I18nService,
     AuthguardService,
     AuthenticationService,
+    HttpService,
     {
       provide: HttpClient
     },

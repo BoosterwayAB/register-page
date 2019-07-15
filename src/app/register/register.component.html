@@ -55,22 +55,24 @@
               [hidden]="!error || isLoading"
               translate
             >
-              Username or password incorrect.
+              Name, email and password is required.
             </div>
             <div class="form-group">
+
+              <!-- NAME -->
               <label class="d-block">
                 <input
                   type="text"
                   class="form-control"
-                  formControlName="username"
-                  autocomplete="username"
-                  [placeholder]="'Username' | translate"
+                  formControlName="name"
+                  autocomplete="name"
+                  [placeholder]="'Name' | translate"
                 />
                 <span hidden translate>Username</span>
                 <small
                   [hidden]="
-                    registerForm.controls.username.valid ||
-                    registerForm.controls.username.untouched
+                    registerForm.controls.name.valid ||
+                    registerForm.controls.name.untouched
                   "
                   class="text-danger"
                   translate
@@ -79,6 +81,30 @@
                 </small>
               </label>
 
+              <!-- Email -->
+              <label class="d-block">
+                  <input
+                    type="email"
+                    class="form-control"
+                    formControlName="email"
+                    autocomplete="current-password"
+                    [placeholder]="'Email' | translate"
+                    required
+                  />
+                  <span hidden translate>Email</span>
+                  <small
+                    [hidden]="
+                      registerForm.controls.email.valid ||
+                      registerForm.controls.email.untouched
+                    "
+                    class="text-danger"
+                    translate
+                  >
+                    Email is required
+                  </small>
+                </label>
+
+              <!-- Password -->
               <label class="d-block">
                 <input
                   type="password"
@@ -101,27 +127,7 @@
                 </small>
               </label>
 
-              <label class="d-block">
-                <input
-                  type="password"
-                  class="form-control"
-                  formControlName="repeatpassword"
-                  autocomplete=""
-                  [placeholder]="'Repeat Password' | translate"
-                  required
-                />
-                <span hidden translate>Password</span>
-                <small
-                  [hidden]="
-                    registerForm.controls.repeatpassword.valid ||
-                    registerForm.controls.repeatpassword.untouched
-                  "
-                  class="text-danger"
-                  translate
-                >
-                  Password is required
-                </small>
-              </label>
+
             </div>
             <button
               class="btn btn-primary w-100"

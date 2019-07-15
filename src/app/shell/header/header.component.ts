@@ -25,6 +25,8 @@ export class HeaderComponent implements OnInit {
 
   logout() {
     console.log('Implement logout');
+    localStorage.clear();
+    this.router.navigate(['./home'])
   }
 
   get currentLanguage(): string {

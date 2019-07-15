@@ -1,34 +1,44 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { HttpService } from './http.service';
+import { Headers, RequestOptions, Http } from '@angular/http';
 
-let _url = '';
+let url = '';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
-  constructor(private httpClient: HttpClient, private url: HttpService) {
-    _url = this.url.getUrl();
+
+  constructor(private httpService: HttpService, private http: Http) {
+
+    url = this.httpService.getUrl()
+
   }
 
-  async getTest(data: Object) {
-    console.log('TESTING');
-    console.log(data);
-    console.log(this.url.getUrl());
+  async login(data: Object) {
 
-    this.httpClient
-      .get(_url, {
-        params: {
-          email: 'sebastian@boosterway.com',
-          password: 'Arne2218'
-        },
-        observe: 'response'
-      })
-      .toPromise()
-      .then(response => {
-        console.log(response);
-      })
-      .catch(console.log);
+    console.log('auth login starts')
+
+    let user = {
+      email: 'sebastian@boosterway.com',
+      password: 'Arne2218'
+    }
+
+    var _url = url + '/auth/login'
+    let login_data: any;
+
+    await this.http.post(_url, user).toPromise().then(
+      res => { // Success
+        login_data = res
+
+      },
+      err => { // Error
+        login_data = err
+      }
+    );
+
+    return login_data
+
   }
+
 }

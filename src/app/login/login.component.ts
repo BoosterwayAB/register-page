@@ -16,6 +16,7 @@ const log = new Logger('Login');
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit, OnDestroy {
+
   version: string = environment.version;
   error: string | undefined;
   loginForm!: FormGroup;
@@ -31,14 +32,64 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.createForm();
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
-  ngOnDestroy() {}
+  ngOnDestroy() { }
 
-  login() {
-    this.isLoading = true;
+  async login() {
 
-    this.auth.getTest({ test: 'test' });
+    this.isLoading = true
+
+    let resp = await this.auth.login(this.loginForm.value)
+    let json_data = resp.json()
+
+    if (resp.status == 200) {
+
+      if (json_data.token) {
+        localStorage.setItem('authtoken', json_data.token);
+        this.router.navigate(['./home'])
+      } else {
+        this.getErrorMsg(json_data.error)
+      }
+
+      this.stopLoading()
+
+    } else {
+
+      this.getErrorMsg(json_data.code)
+      this.stopLoading()
+
+    }
+
+  }
+
+  getErrorMsg(code: any){
+
+    let error_msg;
+      switch (code) {
+        case 0:
+          error_msg = 'Din e-mail finns inte registrerad hos oss.';
+          break;
+        case 1:
+          error_msg = 'Ditt konto har blivit avaktiverat, vänligen kontakta support@boosterway.com för mer info.';
+          break;
+        case 2:
+          error_msg = 'Ditt konto har blivit avaktiverat, vänligen kontakta support@boosterway.com för mer info.';
+          break;
+        case 3:
+          error_msg = 'Lösenordet matchar inte din valda e-mail';
+          break;
+        default:
+          error_msg = 'Något gick fel när vi försökte logga in dig. Vänligen försök igen eller kontakta support@boosterway.com vid frågor.';
+
+      }
+      console.log(error_msg)
+
+      return error_msg
+  }
+
+  stopLoading() {
+    this.isLoading = false
   }
 
   toRegister() {
@@ -64,8 +115,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   private createForm() {
     this.loginForm = this.formBuilder.group({
       username: ['', Validators.required],
-      password: ['', Validators.required],
-      remember: true
+      password: ['', Validators.required]
     });
   }
 }

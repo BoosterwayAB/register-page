@@ -33,37 +33,12 @@ export class RegisterComponent implements OnInit, OnDestroy {
   ngOnDestroy() {}
 
   register() {
-    console.log('register');
-    // this.isLoading = true;
-    // const login$ = this.authenticationService.login(this.loginForm.value);
-    // login$
-    //   .pipe(
-    //     finalize(() => {
-    //       this.loginForm.markAsPristine();
-    //       this.isLoading = false;
-    //     }),
-    //     untilDestroyed(this)
-    //   )
-    //   .subscribe(
-    //     credentials => {
-    //       log.debug(`${credentials.username} successfully logged in`);
-    //       this.router.navigate(
-    //         [this.route.snapshot.queryParams.redirect || '/'],
-    //         { replaceUrl: true }
-    //       );
-    //     },
-    //     error => {
-    //       log.debug(`Login error: ${error}`);
-    //       this.error = error;
-    //     }
-    //   );
+    console.log('register will be implemented soon');
   }
 
   toLogin() {
     this.isLoading = true;
-
     this.router.navigate(['/login'], { replaceUrl: true });
-
     this.isLoading = false;
   }
 
@@ -81,9 +56,9 @@ export class RegisterComponent implements OnInit, OnDestroy {
 
   private createForm() {
     this.registerForm = this.formBuilder.group({
-      username: ['', Validators.required],
-      password: ['', Validators.required],
-      name: ['', Validators.required]
+      name: ['', Validators.required],
+      email: ['', Validators.required],
+      password: ['', Validators.required]
     });
   }
 }

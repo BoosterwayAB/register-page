@@ -12,6 +12,7 @@ import {
 export class AuthguardService {
   constructor(private router: Router) {}
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+    
     const authToken = localStorage.getItem('authtoken');
     console.log(authToken);
 
