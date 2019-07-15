@@ -3,13 +3,10 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { finalize } from 'rxjs/operators';
 
+import { AuthenticationService } from '../core/http/authentication.service';
+
 import { environment } from '@env/environment';
-import {
-  Logger,
-  I18nService,
-  AuthenticationService,
-  untilDestroyed
-} from '@app/core';
+import { Logger, I18nService, untilDestroyed } from '@app/core';
 
 const log = new Logger('Login');
 
@@ -29,7 +26,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private formBuilder: FormBuilder,
     private i18nService: I18nService,
-    private authenticationService: AuthenticationService
+    private auth: AuthenticationService
   ) {
     this.createForm();
   }
@@ -40,28 +37,8 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   login() {
     this.isLoading = true;
-    const login$ = this.authenticationService.login(this.loginForm.value);
-    login$
-      .pipe(
-        finalize(() => {
-          this.loginForm.markAsPristine();
-          this.isLoading = false;
-        }),
-        untilDestroyed(this)
-      )
-      .subscribe(
-        credentials => {
-          log.debug(`${credentials.username} successfully logged in`);
-          this.router.navigate(
-            [this.route.snapshot.queryParams.redirect || '/'],
-            { replaceUrl: true }
-          );
-        },
-        error => {
-          log.debug(`Login error: ${error}`);
-          this.error = error;
-        }
-      );
+
+    this.auth.getTest({ test: 'test' });
   }
 
   toRegister() {

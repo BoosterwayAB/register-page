@@ -4,12 +4,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { finalize } from 'rxjs/operators';
 
 import { environment } from '@env/environment';
-import {
-  Logger,
-  I18nService,
-  AuthenticationService,
-  untilDestroyed
-} from '@app/core';
+import { Logger, I18nService, untilDestroyed } from '@app/core';
 
 const log = new Logger('Register');
 
@@ -28,8 +23,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
     private router: Router,
     private route: ActivatedRoute,
     private formBuilder: FormBuilder,
-    private i18nService: I18nService,
-    private authenticationService: AuthenticationService
+    private i18nService: I18nService
   ) {
     this.createForm();
   }
@@ -89,8 +83,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
     this.registerForm = this.formBuilder.group({
       username: ['', Validators.required],
       password: ['', Validators.required],
-      repeatpassword: ['', Validators.required],
-      remember: true
+      name: ['', Validators.required]
     });
   }
 }
