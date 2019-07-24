@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { finalize } from 'rxjs/operators';
+import { HttpService } from '../core/http/http.service'
 
 @Component({
   selector: 'app-home',
@@ -10,7 +10,25 @@ export class HomeComponent implements OnInit {
   quote: string | undefined;
   isLoading = false;
 
-  constructor() {}
+  constructor(private http: HttpService) {
 
-  ngOnInit() {}
+    console.log('home constructor')
+
+  }
+
+  ngOnInit() {
+
+    console.log('home Initiazing')
+    this.getUserStatus()
+
+  }
+
+  async getUserStatus(){
+
+    let user = JSON.parse(localStorage.getItem('userdata'))
+    console.log(user.userId)
+    let res = await this.http.checkStripeConnection(user.userId)
+    console.log(res)
+
+  }
 }

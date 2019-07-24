@@ -45,8 +45,11 @@ export class LoginComponent implements OnInit, OnDestroy {
 
     if (resp.status == 200) {
 
+      console.log(json_data)
+
       if (json_data.token) {
-        localStorage.setItem('authtoken', json_data.token);
+        localStorage.setItem('authtoken', json_data.token)
+        localStorage.setItem('userdata', JSON.stringify(json_data))
         this.router.navigate(['./home'])
       } else {
         this.getErrorMsg(json_data.error)

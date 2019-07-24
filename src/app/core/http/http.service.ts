@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Headers, RequestOptions, Http } from '@angular/http';
+import { Headers, RequestOptions, Http, URLSearchParams } from '@angular/http';
 
 
 const local = 'http://localhost:8080/api/v1';
 const test = 'https://boosterway-1521738141855.appspot.com/api/v1';
-const local_ip = 'http://192.168.1.224:8080/api/v1';
+const local_ip = 'http://localhost:8080/api/v1';
 const prod = 'https://appconnect.boosterway.net/api/v1';
 
 @Injectable({
@@ -14,11 +14,11 @@ const prod = 'https://appconnect.boosterway.net/api/v1';
 
 export class HttpService {
 
-  private LocalIpAdres = test
+  private LocalIpAdres = local
 
   constructor(private httpClient: HttpClient, private http: Http) {
 
-
+    
 
   }
 
@@ -26,6 +26,7 @@ export class HttpService {
     return this.LocalIpAdres
   }
 
+  // Login user
   loginUser(user: object) {
 
     var url = this.LocalIpAdres + '/auth/login'
@@ -33,6 +34,36 @@ export class HttpService {
     return this.http.post(url, user)
 
   }
+
+  // Check if user have Stripe account
+  async checkStripeConnection(userId: string) {
+
+    console.log('checking stripe')
+    console.log(userId)
+
+    let params = new URLSearchParams();
+    params.append("userId", userId)
+
+    let options = new RequestOptions({ headers: this.setHeader(), search: params });
+    var url = this.LocalIpAdres + '/connect/status';
+
+    var login_data: any;
+
+    await this.http.get(url, options).toPromise().then(
+      res => { // Success
+        login_data = res
+
+      },
+      err => { // Error
+        login_data = err
+      }
+    );
+
+    return login_data
+
+  }
+
+
 
   private getToken() {
 

@@ -7,3 +7,9 @@
 .nav-link.dropdown-toggle {
   cursor: pointer;
 }
+
+
+.navbar-expand-lg .navbar-nav .dropdown-menu {
+    position: absolute;
+    right: 0px;
+}

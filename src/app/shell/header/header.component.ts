@@ -9,11 +9,16 @@ import { I18nService } from '@app/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+
   menuHidden = true;
+  user = ''
 
   constructor(private router: Router, private i18nService: I18nService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    let temp = JSON.parse(localStorage.getItem('userdata'))
+    this.user = temp.name
+  }
 
   toggleMenu() {
     this.menuHidden = !this.menuHidden;
@@ -26,7 +31,7 @@ export class HeaderComponent implements OnInit {
   logout() {
     console.log('Implement logout');
     localStorage.clear();
-    this.router.navigate(['./home'])
+    this.router.navigate(['./login'])
   }
 
   get currentLanguage(): string {
@@ -35,5 +40,9 @@ export class HeaderComponent implements OnInit {
 
   get languages(): string[] {
     return this.i18nService.supportedLanguages;
+  }
+
+  get userName(): string{
+    return this.user
   }
 }
