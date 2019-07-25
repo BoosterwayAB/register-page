@@ -1,7 +1,7 @@
 {
   "APP_NAME": "Boosterway",
   "About": "About",
-  "Hello world !": "Hello world !",
+  "Welcome": "Welcome",
   "Home": "Home",
   "Logged in as": "Logged in as",
   "Login": "Login",
@@ -15,5 +15,12 @@
   "Username or password incorrect.": "Username or password incorrect.",
   "Remember me": "Remember me",
   "Version": "Version",
-  "Forgott password?": "Forgot password?"
+  "Forgott password?": "Forgot password?",
+  "E-mail": "E-mail",
+  "We'll never share your email with anyone else.": "We'll never share your email with anyone else.",
+  "Edit": "Edit",
+  "Your profile": "Your profile",
+  "Download app": "Download app",
+  "Your priceolan": "Your priceplan",
+  "Creditcard": "Creditcard"
 }

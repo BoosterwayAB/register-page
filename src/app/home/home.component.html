@@ -1,8 +1,8 @@
 <div class="container-fluid">
   <div class="jumbotron text-center">
     <h1>
-      <img class="logo" src="assets/ngx-rocket-logo.png" alt="angular logo" />
-      <span translate>Hello world !</span>
+      <!--<img class="logo" src="assets/app-logo9.jpg" alt="angular logo"/>-->
+      <span translate>Welcome</span>
     </h1>
     <app-loader [isLoading]="isLoading"></app-loader>
   </div>
@@ -12,83 +12,66 @@
     <div class="row">
       <div class="col myCol">
 
-        <!--STRIPE FIELDS-->
+        <!--Profile-->
+        <h3 translate>Your profile</h3>
+        <form (ngSubmit)="editProfile()" [formGroup]="profileForm" novalidate>
 
-        <form class="needs-validation" novalidate>
-          <div class="form-row">
-            <div class="col-md-4 mb-3">
-              <label for="validationCustom01">First name</label>
-              <input type="text" class="form-control" id="validationCustom01" placeholder="First name" value="Mark"
-                required>
-              <div class="valid-feedback">
-                Looks good!
-              </div>
-            </div>
-            <div class="col-md-4 mb-3">
-              <label for="validationCustom02">Last name</label>
-              <input type="text" class="form-control" id="validationCustom02" placeholder="Last name" value="Otto"
-                required>
-              <div class="valid-feedback">
-                Looks good!
-              </div>
-            </div>
-            <div class="col-md-4 mb-3">
-              <label for="validationCustomUsername">Username</label>
-              <div class="input-group">
-                <div class="input-group-prepend">
-                </div>
-                <input type="text" class="form-control" id="validationCustomUsername" placeholder="Username"
-                  aria-describedby="inputGroupPrepend" required>
-                <div class="invalid-feedback">
-                  Please choose a username.
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="col-md-6 mb-3">
-              <label for="validationCustom03">City</label>
-              <input type="text" class="form-control" id="validationCustom03" placeholder="City" required>
-              <div class="invalid-feedback">
-                Please provide a valid city.
-              </div>
-            </div>
-            <div class="col-md-3 mb-3">
-              <label for="validationCustom04">State</label>
-              <input type="text" class="form-control" id="validationCustom04" placeholder="State" required>
-              <div class="invalid-feedback">
-                Please provide a valid state.
-              </div>
-            </div>
-            <div class="col-md-3 mb-3">
-              <label for="validationCustom05">Zip</label>
-              <input type="text" class="form-control" id="validationCustom05" placeholder="Zip" required>
-              <div class="invalid-feedback">
-                Please provide a valid zip.
-              </div>
-            </div>
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input id="exampleInputName" type="text" class="form-control" formControlName="name" autocomplete="name"
+              [placeholder]="'Name' | translate">
           </div>
 
-          <button class="btn btn-primary" type="submit">Submit form</button>
-          
+          <div class="form-group">
+            <label for="email">Email address</label>
+            <input id="exampleInputEmail" type="email" class="form-control" formControlName="email" autocomplete="email"
+              [placeholder]="'E-mail' | translate">
+            <!--<small id="emailHelp" class="form-text text-muted" translate>We'll never share your email with anyone
+              else.</small>-->
+          </div>
+
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input id="exampleInputPassword" type="password" class="form-control" formControlName="password"
+              autocomplete="password" [placeholder]="'Password' | translate">
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-boosterway" [disabled]="!editForm" translate>Edit</button>
+
+          <i *ngIf="!editForm" class="fas fa-lock bigIcon" (click)="lock()"></i>
+          <i *ngIf="editForm" class="fas fa-lock-open bigIcon" (click)="lock()"></i>
+
         </form>
 
+      </div>
 
-      </div>
       <div class="col myCol">
-        2 of 2
+        <!--App-->
+        <h3 translate>Download app</h3>
+        <img class="logo2" src="assets/appstore.png" alt="angular logo"/>
+        <img class="logo2" src="assets/googleplay.png" alt="angular logo"/>
       </div>
+
     </div>
+
+
+
     <div class="row">
+
+
       <div class="col myCol">
-        1 of 3
+        <!--App-->
+        <h3 translate>Your priceplan</h3>
       </div>
+
+
       <div class="col myCol">
-        2 of 3
+        <!--App-->
+        <h3 translate>Creditcard</h3>
       </div>
-      <div class="col myCol">
-        3 of 3
-      </div>
+
+
+
     </div>
   </div>
 

@@ -1,5 +1,6 @@
 .logo {
   width: 100px;
+  border-radius: 50%;
 }
 
 q {
@@ -17,7 +18,7 @@ q {
 }
 
 .container {
-  max-width: 2000px;
+  max-width: 1200px;
   color: #c0d3e5;
 }
 
@@ -25,4 +26,24 @@ q {
 .jumbotron{
   border-radius: 20px;
   margin: 20px;
+  color: rgba(0, 0, 0, 0.7);
+  font-weight: 600 !important;
+}
+
+.bigIcon{
+  position: absolute;
+  right: 40px;;
+  font-size: 40px;
+  padding-top: 20px;
+}
+
+h3{
+  font-size: 20px;
+  color: rgba(0, 0, 0, 0.7);
+  font-weight: 600;
+}
+
+.logo2{
+  
+  width: 200px;
 }

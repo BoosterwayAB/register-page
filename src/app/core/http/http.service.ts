@@ -38,28 +38,33 @@ export class HttpService {
   // Check if user have Stripe account
   async checkStripeConnection(userId: string) {
 
-    console.log('checking stripe')
-    console.log(userId)
+    let params = new URLSearchParams();
+    params.append("userId", userId)
+
+    let options = new RequestOptions({ headers: this.setHeader(), search: params });
+    let url = this.LocalIpAdres + '/connect/status';
+
+    let data: any;
+
+    await this.http.get(url, options).toPromise().then(res => {data = res}, err => {data = err});
+    return data
+
+  }
+
+
+  // Get user
+  async getUser(userId: string) {
 
     let params = new URLSearchParams();
     params.append("userId", userId)
 
     let options = new RequestOptions({ headers: this.setHeader(), search: params });
-    var url = this.LocalIpAdres + '/connect/status';
+    var url = this.LocalIpAdres + '/profile';
 
-    var login_data: any;
+    var data: any;
 
-    await this.http.get(url, options).toPromise().then(
-      res => { // Success
-        login_data = res
-
-      },
-      err => { // Error
-        login_data = err
-      }
-    );
-
-    return login_data
+    await this.http.get(url, options).toPromise().then(res => {data = res}, err => {data = err});
+    return data
 
   }
 

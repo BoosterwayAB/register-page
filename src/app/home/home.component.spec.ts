@@ -5,13 +5,24 @@ import { CoreModule } from '@app/core';
 import { SharedModule } from '@app/shared';
 import { HomeComponent } from './home.component';
 
+import { TranslateModule } from '@ngx-translate/core';
+import { RouterTestingModule } from '@angular/router/testing';
+import { ReactiveFormsModule } from '@angular/forms';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 describe('HomeComponent', () => {
   let component: HomeComponent;
   let fixture: ComponentFixture<HomeComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [CoreModule, SharedModule, HttpClientTestingModule],
+      imports: [
+        NgbModule,
+        RouterTestingModule,
+        TranslateModule.forRoot(),
+        ReactiveFormsModule,
+        CoreModule
+      ],
       declarations: [HomeComponent],
       providers: []
     }).compileComponents();
