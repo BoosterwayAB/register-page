@@ -48,8 +48,8 @@
       <div class="col myCol">
         <!--App-->
         <h3 translate>Download app</h3>
-        <img class="logo2" src="assets/appstore.png" alt="angular logo"/>
-        <img class="logo2" src="assets/googleplay.png" alt="angular logo"/>
+        <img class="logo2" src="assets/appstore.png" alt="angular logo" />
+        <img class="logo2" src="assets/googleplay.png" alt="angular logo" />
       </div>
 
     </div>
@@ -68,6 +68,30 @@
       <div class="col myCol">
         <!--App-->
         <h3 translate>Creditcard</h3>
+
+        <div *ngIf="stripeUser">
+
+        </div>
+
+        <div *ngIf="!stripeUser">
+          No user
+          
+          <form (ngSubmit)="createCustomer()" [formGroup]="profileForm" novalidate>
+
+            <div class="form-group">
+
+
+
+              
+              
+            </div>
+            <button type="submit" class="btn btn-primary btn-boosterway" translate>Create Customer</button>
+          </form>
+
+
+        </div>
+
+
       </div>
 
 

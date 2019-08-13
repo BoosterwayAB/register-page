@@ -52,8 +52,8 @@ export class HttpService {
   }
 
 
-  // Get user
-  async getUser(userId: string) {
+  // Get profile
+  async getProfile(userId: string) {
 
     let params = new URLSearchParams();
     params.append("userId", userId)
@@ -68,7 +68,55 @@ export class HttpService {
 
   }
 
+  // Get user
+  async getUser(userId: string) {
 
+    let params = new URLSearchParams();
+    params.append("userId", userId)
+
+    let options = new RequestOptions({ headers: this.setHeader(), search: params });
+    var url = this.LocalIpAdres + '/user';
+
+    var data: any;
+
+    await this.http.get(url, options).toPromise().then(res => {data = res}, err => {data = err});
+    return data
+
+  }
+
+
+
+
+
+
+  // Create customer
+  async createCustomer(email: string, organizerId: string) {
+  
+    let obj = {email: email, organizerId: organizerId}
+
+    let options = new RequestOptions({ headers: this.setHeader()});
+    var url = this.LocalIpAdres + '/connect/create';
+
+    var data: any;
+
+    await this.http.post(url, obj, options).toPromise().then(res => {data = res}, err => {data = err});
+    return data
+
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
 
   private getToken() {
 
